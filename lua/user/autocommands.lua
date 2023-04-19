@@ -24,6 +24,27 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
 	end,
 })
 
+vim.api.nvim_create_autocmd({ "FileType" }, {
+    pattern = { "c", "cpp", "java" },
+    callback = function()
+        vim.opt.colorcolumn = { 80 }
+    end,
+})
+
+vim.api.nvim_create_autocmd({ "FileType" }, {
+    pattern = { "verilog", "systemverilog" },
+    callback = function()
+        vim.opt.colorcolumn = { 100 }
+    end,
+})
+
+vim.api.nvim_create_autocmd({ "FileType" }, {
+    pattern = { "gitcommit" },
+    callback = function()
+        vim.opt.colorcolumn = { 72 }
+    end,
+})
+
 vim.cmd("autocmd BufEnter * ++nested if winnr('$') == 1 && bufname() == 'NvimTree_' . tabpagenr() | quit | endif")
 
 vim.api.nvim_create_autocmd({ "VimResized" }, {
